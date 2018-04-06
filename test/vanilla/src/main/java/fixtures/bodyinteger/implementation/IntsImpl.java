@@ -29,7 +29,8 @@ import io.reactivex.Completable;
 import io.reactivex.Maybe;
 import io.reactivex.Single;
 import io.reactivex.annotations.NonNull;
-import java.time.OffsetDateTime;
+import io.reactivex.functions.Function;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * An instance of this class provides access to all the operations defined in
@@ -174,7 +175,11 @@ public final class IntsImpl implements Ints {
      */
     public Maybe<Integer> getNullAsync() {
         return getNullWithRestResponseAsync()
-            .flatMapMaybe((BodyResponse<Integer> res) -> res.body() == null ? Maybe.empty() : Maybe.just(res.body()));
+            .flatMapMaybe(new Function<BodyResponse<Integer>, Maybe<Integer>>() {
+                public Maybe<Integer> apply(BodyResponse<Integer> res) {
+                    return res.body() == null ? Maybe.<Integer>empty() : Maybe.just(res.body());
+                }
+            });
     }
 
     /**
@@ -215,7 +220,11 @@ public final class IntsImpl implements Ints {
      */
     public Maybe<Integer> getInvalidAsync() {
         return getInvalidWithRestResponseAsync()
-            .flatMapMaybe((BodyResponse<Integer> res) -> res.body() == null ? Maybe.empty() : Maybe.just(res.body()));
+            .flatMapMaybe(new Function<BodyResponse<Integer>, Maybe<Integer>>() {
+                public Maybe<Integer> apply(BodyResponse<Integer> res) {
+                    return res.body() == null ? Maybe.<Integer>empty() : Maybe.just(res.body());
+                }
+            });
     }
 
     /**
@@ -256,7 +265,11 @@ public final class IntsImpl implements Ints {
      */
     public Maybe<Integer> getOverflowInt32Async() {
         return getOverflowInt32WithRestResponseAsync()
-            .flatMapMaybe((BodyResponse<Integer> res) -> res.body() == null ? Maybe.empty() : Maybe.just(res.body()));
+            .flatMapMaybe(new Function<BodyResponse<Integer>, Maybe<Integer>>() {
+                public Maybe<Integer> apply(BodyResponse<Integer> res) {
+                    return res.body() == null ? Maybe.<Integer>empty() : Maybe.just(res.body());
+                }
+            });
     }
 
     /**
@@ -297,7 +310,11 @@ public final class IntsImpl implements Ints {
      */
     public Maybe<Integer> getUnderflowInt32Async() {
         return getUnderflowInt32WithRestResponseAsync()
-            .flatMapMaybe((BodyResponse<Integer> res) -> res.body() == null ? Maybe.empty() : Maybe.just(res.body()));
+            .flatMapMaybe(new Function<BodyResponse<Integer>, Maybe<Integer>>() {
+                public Maybe<Integer> apply(BodyResponse<Integer> res) {
+                    return res.body() == null ? Maybe.<Integer>empty() : Maybe.just(res.body());
+                }
+            });
     }
 
     /**
@@ -338,7 +355,11 @@ public final class IntsImpl implements Ints {
      */
     public Maybe<Long> getOverflowInt64Async() {
         return getOverflowInt64WithRestResponseAsync()
-            .flatMapMaybe((BodyResponse<Long> res) -> res.body() == null ? Maybe.empty() : Maybe.just(res.body()));
+            .flatMapMaybe(new Function<BodyResponse<Long>, Maybe<Long>>() {
+                public Maybe<Long> apply(BodyResponse<Long> res) {
+                    return res.body() == null ? Maybe.<Long>empty() : Maybe.just(res.body());
+                }
+            });
     }
 
     /**
@@ -379,7 +400,11 @@ public final class IntsImpl implements Ints {
      */
     public Maybe<Long> getUnderflowInt64Async() {
         return getUnderflowInt64WithRestResponseAsync()
-            .flatMapMaybe((BodyResponse<Long> res) -> res.body() == null ? Maybe.empty() : Maybe.just(res.body()));
+            .flatMapMaybe(new Function<BodyResponse<Long>, Maybe<Long>>() {
+                public Maybe<Long> apply(BodyResponse<Long> res) {
+                    return res.body() == null ? Maybe.<Long>empty() : Maybe.just(res.body());
+                }
+            });
     }
 
     /**
@@ -608,7 +633,11 @@ public final class IntsImpl implements Ints {
      */
     public Maybe<OffsetDateTime> getUnixTimeAsync() {
         return getUnixTimeWithRestResponseAsync()
-            .flatMapMaybe((BodyResponse<OffsetDateTime> res) -> res.body() == null ? Maybe.empty() : Maybe.just(res.body()));
+            .flatMapMaybe(new Function<BodyResponse<OffsetDateTime>, Maybe<OffsetDateTime>>() {
+                public Maybe<OffsetDateTime> apply(BodyResponse<OffsetDateTime> res) {
+                    return res.body() == null ? Maybe.<OffsetDateTime>empty() : Maybe.just(res.body());
+                }
+            });
     }
 
     /**
@@ -697,7 +726,11 @@ public final class IntsImpl implements Ints {
      */
     public Maybe<OffsetDateTime> getInvalidUnixTimeAsync() {
         return getInvalidUnixTimeWithRestResponseAsync()
-            .flatMapMaybe((BodyResponse<OffsetDateTime> res) -> res.body() == null ? Maybe.empty() : Maybe.just(res.body()));
+            .flatMapMaybe(new Function<BodyResponse<OffsetDateTime>, Maybe<OffsetDateTime>>() {
+                public Maybe<OffsetDateTime> apply(BodyResponse<OffsetDateTime> res) {
+                    return res.body() == null ? Maybe.<OffsetDateTime>empty() : Maybe.just(res.body());
+                }
+            });
     }
 
     /**
@@ -738,6 +771,10 @@ public final class IntsImpl implements Ints {
      */
     public Maybe<OffsetDateTime> getNullUnixTimeAsync() {
         return getNullUnixTimeWithRestResponseAsync()
-            .flatMapMaybe((BodyResponse<OffsetDateTime> res) -> res.body() == null ? Maybe.empty() : Maybe.just(res.body()));
+            .flatMapMaybe(new Function<BodyResponse<OffsetDateTime>, Maybe<OffsetDateTime>>() {
+                public Maybe<OffsetDateTime> apply(BodyResponse<OffsetDateTime> res) {
+                    return res.body() == null ? Maybe.<OffsetDateTime>empty() : Maybe.just(res.body());
+                }
+            });
     }
 }

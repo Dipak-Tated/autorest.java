@@ -27,6 +27,7 @@ import io.reactivex.Completable;
 import io.reactivex.Maybe;
 import io.reactivex.Single;
 import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Function;
 
 /**
  * An instance of this class provides access to all the operations defined in
@@ -123,7 +124,11 @@ public final class BytesImpl implements Bytes {
      */
     public Maybe<byte[]> getNullAsync() {
         return getNullWithRestResponseAsync()
-            .flatMapMaybe((BodyResponse<byte[]> res) -> res.body() == null ? Maybe.empty() : Maybe.just(res.body()));
+            .flatMapMaybe(new Function<BodyResponse<byte[]>, Maybe<byte[]>>() {
+                public Maybe<byte[]> apply(BodyResponse<byte[]> res) {
+                    return res.body() == null ? Maybe.<byte[]>empty() : Maybe.just(res.body());
+                }
+            });
     }
 
     /**
@@ -164,7 +169,11 @@ public final class BytesImpl implements Bytes {
      */
     public Maybe<byte[]> getEmptyAsync() {
         return getEmptyWithRestResponseAsync()
-            .flatMapMaybe((BodyResponse<byte[]> res) -> res.body() == null ? Maybe.empty() : Maybe.just(res.body()));
+            .flatMapMaybe(new Function<BodyResponse<byte[]>, Maybe<byte[]>>() {
+                public Maybe<byte[]> apply(BodyResponse<byte[]> res) {
+                    return res.body() == null ? Maybe.<byte[]>empty() : Maybe.just(res.body());
+                }
+            });
     }
 
     /**
@@ -205,7 +214,11 @@ public final class BytesImpl implements Bytes {
      */
     public Maybe<byte[]> getNonAsciiAsync() {
         return getNonAsciiWithRestResponseAsync()
-            .flatMapMaybe((BodyResponse<byte[]> res) -> res.body() == null ? Maybe.empty() : Maybe.just(res.body()));
+            .flatMapMaybe(new Function<BodyResponse<byte[]>, Maybe<byte[]>>() {
+                public Maybe<byte[]> apply(BodyResponse<byte[]> res) {
+                    return res.body() == null ? Maybe.<byte[]>empty() : Maybe.just(res.body());
+                }
+            });
     }
 
     /**
@@ -296,6 +309,10 @@ public final class BytesImpl implements Bytes {
      */
     public Maybe<byte[]> getInvalidAsync() {
         return getInvalidWithRestResponseAsync()
-            .flatMapMaybe((BodyResponse<byte[]> res) -> res.body() == null ? Maybe.empty() : Maybe.just(res.body()));
+            .flatMapMaybe(new Function<BodyResponse<byte[]>, Maybe<byte[]>>() {
+                public Maybe<byte[]> apply(BodyResponse<byte[]> res) {
+                    return res.body() == null ? Maybe.<byte[]>empty() : Maybe.just(res.body());
+                }
+            });
     }
 }

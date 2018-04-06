@@ -6,7 +6,7 @@ import fixtures.bodydictionary.models.Widget;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.time.*;
+import org.threeten.bp.*;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -45,7 +45,7 @@ public class DictionaryTests {
 
     @Test
     public void putEmpty() {
-        client.dictionarys().putEmpty(new HashMap<>());
+        client.dictionarys().putEmpty(new HashMap<String, String>());
     }
 
     @Test
@@ -72,7 +72,7 @@ public class DictionaryTests {
 
     @Test
     public void getBooleanTfft() {
-        Map<String, Boolean>  result = client.dictionarys().getBooleanTfft();
+        Map<String, Boolean> result = client.dictionarys().getBooleanTfft();
         Map<String, Boolean> expected = new HashMap<>();
         expected.put("0", true);
         expected.put("1", false);
