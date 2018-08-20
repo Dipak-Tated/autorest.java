@@ -33,7 +33,7 @@
   "devDependencies": {
     "@microsoft.azure/autorest.testserver": "^2.5.24",
     "autorest": "^2.0.4280",
-    "coffee-script": "^1.11.1",
+    "coffeescript": "^1.11.1",
     "dotnet-sdk-2.0.0": "^1.4.4",
     "gulp": "^3.9.1",
     "gulp-filter": "^5.0.0",
